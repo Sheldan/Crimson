@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <packaging>pom</packaging>
+
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>3.1.1</version>
+        <relativePath />
+    </parent>
+
+    <groupId>dev.sheldan.crimson</groupId>
+    <artifactId>crimson</artifactId>
+    <name>Crimson</name>
+    <version>0.0.1-SNAPSHOT</version>
+
+    <properties>
+        <maven.compiler.target>17</maven.compiler.target>
+        <maven.compiler.source>17</maven.compiler.source>
+        <abstracto.version>1.5.37-SNAPSHOT</abstracto.version>
+        <abstracto.templates.version>1.4.38-SNAPSHOT</abstracto.templates.version>
+    </properties>
+
+    <modules>
+        <module>application</module>
+        <module>deployment</module>
+    </modules>
+
+    <repositories>
+        <repository>
+            <id>jcenter</id>
+            <name>jcenter-bintray</name>
+            <url>https://jcenter.bintray.com</url>
+        </repository>
+        <repository>
+            <id>github-abstracto</id>
+            <url>https://maven.pkg.github.com/Sheldan/abstracto*</url>
+            <snapshots>
+                <enabled>true</enabled>
+            </snapshots>
+        </repository>
+        <repository>
+            <id>github-crimson</id>
+            <url>https://maven.pkg.github.com/Sheldan/Crimson*</url>
+            <snapshots>
+                <enabled>true</enabled>
+            </snapshots>
+        </repository>
+        <repository>
+            <id>github</id>
+            <url>https://maven.pkg.github.com/Sheldan/*</url>
+            <snapshots>
+                <enabled>true</enabled>
+            </snapshots>
+        </repository>
+
+    </repositories>
+
+    <distributionManagement>
+        <repository>
+            <id>github-crimson</id>
+            <name>GitHub Packages</name>
+            <url>https://maven.pkg.github.com/Sheldan/Crimson</url>
+        </repository>
+    </distributionManagement>
+
+    <scm>
+        <connection>scm:git:${project.scm.url}</connection>
+        <developerConnection>scm:git:${project.scm.url}</developerConnection>
+        <url>https://github.com/Sheldan/Crimson.git</url>
+        <tag>HEAD</tag>
+    </scm>
+
+</project>

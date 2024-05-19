@@ -1,0 +1,13 @@
+{
+  "template_artifacts": [
+    "core", "entertainment", "custom-command", "utility", "webservices",
+    "image-generation"
+  ],
+  "translation_artifacts": [
+    "core",
+    "entertainment", "custom-command", "utility", "webservices",
+    "image-generation"
+  ]
+}
+
+

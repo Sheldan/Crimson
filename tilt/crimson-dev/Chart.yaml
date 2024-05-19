@@ -1,0 +1,11 @@
+apiVersion: v2
+description: crimson dev chart
+name: crimson-dev
+version: 1.0.0
+dependencies:
+  - name: crimson
+    repository: file://../../deployment/helm/crimson
+    version: ">= 0.0.1"
+  - name: postgresql
+    repository: oci://registry-1.docker.io/bitnamicharts
+    version: 15.3.2

@@ -1,0 +1,123 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "crimson.fullname" . }}
+  labels:
+    {{- include "crimson.labels" . | nindent 4 }}
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      {{- include "crimson.selectorLabels" . | nindent 6 }}
+  template:
+    metadata:
+      {{- with .Values.podAnnotations }}
+      annotations:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      labels:
+        {{- include "crimson.selectorLabels" . | nindent 8 }}
+    spec:
+      {{- with .Values.imagePullSecrets }}
+      imagePullSecrets:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      serviceAccountName: {{ include "crimson.serviceAccountName" . }}
+      securityContext:
+        {{- toYaml .Values.podSecurityContext | nindent 8 }}
+      containers:
+        - name: {{ .Chart.Name }}
+          securityContext:
+            {{- toYaml .Values.securityContext | nindent 12 }}
+          image: "{{ .Values.bot.repository }}/{{ .Values.bot.image }}:{{ .Values.bot.tag | default .Chart.Version }}"
+          imagePullPolicy: {{ .Values.bot.pullPolicy }}
+          env:
+            - name: DB_PASS
+              valueFrom:
+                secretKeyRef:
+                  name: db-credentials
+                  key: dbPassword
+            - name: DB_HOST
+              valueFrom:
+                secretKeyRef:
+                  name: db-credentials
+                  key: dbHost
+            - name: DB_PORT
+              valueFrom:
+                secretKeyRef:
+                  name: db-credentials
+                  key: dbPort
+            - name: DB_USER
+              valueFrom:
+                secretKeyRef:
+                  name: db-credentials
+                  key: dbUser
+            - name: DB_NAME
+              valueFrom:
+                secretKeyRef:
+                  name: db-credentials
+                  key: dbName
+            - name: DB_SCHEMA
+              value: {{ .Values.dbCredentials.schema }}
+            - name: DEBRA_DONATION_NOTIFICATION_SERVER_ID
+              value: "297910194841583616"
+            - name: TOKEN
+              valueFrom:
+                secretKeyRef:
+                  name: api-keys
+                  key: discordToken
+            - name: YOUTUBE_API_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: api-keys
+                  key: youtubeApiKey
+            - name: OPEN_WEATHER_MAP_API_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: api-keys
+                  key: openWeatherMapApiKey
+            - name: PRIVATE_REST_API_HOST
+              value: "{{ .Values.privateRestApi.service.name }}.{{ .Release.Namespace }}.svc.cluster.local"
+            - name: PRIVATE_REST_API_PORT
+              value: "{{ .Values.privateRestApi.service.targetPort }}"
+            - name: FRONTEND_BASE
+              value: "https://{{ .Values.bot.host }}"
+            {{- range $key, $value := .Values.bot.propertyConfig }}
+            - name: {{ $key | quote }}
+              value: {{ $value | quote}}
+            {{- end }}
+          ports:
+            - name: http
+              containerPort: {{ .Values.service.port }}
+              protocol: TCP
+            - name: debug
+              containerPort: 5005
+              protocol: TCP
+          livenessProbe:
+            httpGet:
+              path: /actuator/health/liveness
+              port: 8080
+            initialDelaySeconds: {{ $.Values.bot.livenessProbe.initialDelaySeconds }}
+            periodSeconds: {{ $.Values.bot.livenessProbe.periodSeconds }}
+            failureThreshold: {{ $.Values.bot.livenessProbe.failureThreshold }}
+          readinessProbe:
+            httpGet:
+              path: /actuator/health/readiness
+              port: 8080
+            initialDelaySeconds: {{ $.Values.bot.readinessProbe.initialDelaySeconds }}
+            periodSeconds: {{ $.Values.bot.readinessProbe.periodSeconds }}
+            failureThreshold: {{ $.Values.bot.readinessProbe.failureThreshold }}
+          resources:
+            {{- toYaml .Values.resources | nindent 12 }}
+      {{- with .Values.nodeSelector }}
+      nodeSelector:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with .Values.affinity }}
+      affinity:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with .Values.tolerations }}
+      tolerations:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}

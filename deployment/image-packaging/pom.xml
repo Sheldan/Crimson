@@ -1,0 +1,252 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <groupId>dev.sheldan.crimson</groupId>
+        <artifactId>deployment</artifactId>
+        <version>0.0.1-SNAPSHOT</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+
+    <artifactId>image-packaging</artifactId>
+    <packaging>pom</packaging>
+    <properties>
+        <file.basedir>${project.basedir}/src/main/docker/</file.basedir>
+    </properties>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-dependency-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>copy</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>copy</goal>
+                        </goals>
+                        <configuration>
+                            <artifactItems>
+                                <!-- backend jar -->
+                                <artifactItem>
+                                    <groupId>dev.sheldan.crimson.application</groupId>
+                                    <artifactId>executable</artifactId>
+                                    <version>${project.version}</version>
+                                    <classifier>exec</classifier>
+                                    <type>jar</type>
+                                    <overWrite>true</overWrite>
+                                    <outputDirectory>${file.basedir}/crimson/bot</outputDirectory>
+                                    <destFileName>app.jar</destFileName>
+                                </artifactItem>
+
+                                <!-- abstracto template artefacts -->
+                                <artifactItem>
+                                    <groupId>dev.sheldan.abstracto-templates.templates</groupId>
+                                    <artifactId>core</artifactId>
+                                    <version>${abstracto.templates.version}</version>
+                                    <type>zip</type>
+                                    <overWrite>true</overWrite>
+                                    <outputDirectory>${file.basedir}/template-data/template-artifacts/</outputDirectory>
+                                    <destFileName>core.zip</destFileName>
+                                </artifactItem>
+
+                                <artifactItem>
+                                    <groupId>dev.sheldan.abstracto-templates.templates</groupId>
+                                    <artifactId>utility</artifactId>
+                                    <version>${abstracto.templates.version}</version>
+                                    <type>zip</type>
+                                    <overWrite>true</overWrite>
+                                    <outputDirectory>${file.basedir}/template-data/template-artifacts/</outputDirectory>
+                                    <destFileName>utility.zip</destFileName>
+                                </artifactItem>
+
+                                <artifactItem>
+                                    <groupId>dev.sheldan.abstracto-templates.templates</groupId>
+                                    <artifactId>webservices</artifactId>
+                                    <version>${abstracto.templates.version}</version>
+                                    <type>zip</type>
+                                    <overWrite>true</overWrite>
+                                    <outputDirectory>${file.basedir}/template-data/template-artifacts/</outputDirectory>
+                                    <destFileName>webservices.zip</destFileName>
+                                </artifactItem>
+
+                                <artifactItem>
+                                    <groupId>dev.sheldan.abstracto-templates.templates</groupId>
+                                    <artifactId>entertainment</artifactId>
+                                    <version>${abstracto.templates.version}</version>
+                                    <type>zip</type>
+                                    <overWrite>true</overWrite>
+                                    <outputDirectory>${file.basedir}/template-data/template-artifacts/</outputDirectory>
+                                    <destFileName>entertainment.zip</destFileName>
+                                </artifactItem>
+
+                                <artifactItem>
+                                    <groupId>dev.sheldan.abstracto-templates.templates</groupId>
+                                    <artifactId>custom-command</artifactId>
+                                    <version>${abstracto.templates.version}</version>
+                                    <type>zip</type>
+                                    <overWrite>true</overWrite>
+                                    <outputDirectory>${file.basedir}/template-data/template-artifacts/</outputDirectory>
+                                    <destFileName>custom-command.zip</destFileName>
+                                </artifactItem>
+
+                                <artifactItem>
+                                    <groupId>dev.sheldan.abstracto-templates.templates</groupId>
+                                    <artifactId>image-generation</artifactId>
+                                    <version>${abstracto.templates.version}</version>
+                                    <type>zip</type>
+                                    <overWrite>true</overWrite>
+                                    <outputDirectory>${file.basedir}/template-data/template-artifacts/</outputDirectory>
+                                    <destFileName>image-generation.zip</destFileName>
+                                </artifactItem>
+
+                                <!-- abstracto translation artefacts -->
+
+                                <artifactItem>
+                                    <groupId>dev.sheldan.abstracto-templates.translations</groupId>
+                                    <artifactId>core</artifactId>
+                                    <version>${abstracto.templates.version}</version>
+                                    <type>zip</type>
+                                    <overWrite>true</overWrite>
+                                    <outputDirectory>${file.basedir}/template-data/translation-artifacts/</outputDirectory>
+                                    <destFileName>core.zip</destFileName>
+                                </artifactItem>
+
+                                <artifactItem>
+                                    <groupId>dev.sheldan.abstracto-templates.translations</groupId>
+                                    <artifactId>utility</artifactId>
+                                    <version>${abstracto.templates.version}</version>
+                                    <type>zip</type>
+                                    <overWrite>true</overWrite>
+                                    <outputDirectory>${file.basedir}/template-data/translation-artifacts/</outputDirectory>
+                                    <destFileName>utility.zip</destFileName>
+                                </artifactItem>
+
+                                <artifactItem>
+                                    <groupId>dev.sheldan.abstracto-templates.translations</groupId>
+                                    <artifactId>webservices</artifactId>
+                                    <version>${abstracto.templates.version}</version>
+                                    <type>zip</type>
+                                    <overWrite>true</overWrite>
+                                    <outputDirectory>${file.basedir}/template-data/translation-artifacts/</outputDirectory>
+                                    <destFileName>webservices.zip</destFileName>
+                                </artifactItem>
+
+                                <artifactItem>
+                                    <groupId>dev.sheldan.abstracto-templates.translations</groupId>
+                                    <artifactId>entertainment</artifactId>
+                                    <version>${abstracto.templates.version}</version>
+                                    <type>zip</type>
+                                    <overWrite>true</overWrite>
+                                    <outputDirectory>${file.basedir}/template-data/translation-artifacts/</outputDirectory>
+                                    <destFileName>entertainment.zip</destFileName>
+                                </artifactItem>
+
+                                <artifactItem>
+                                    <groupId>dev.sheldan.abstracto-templates.translations</groupId>
+                                    <artifactId>custom-command</artifactId>
+                                    <version>${abstracto.templates.version}</version>
+                                    <type>zip</type>
+                                    <overWrite>true</overWrite>
+                                    <outputDirectory>${file.basedir}/template-data/translation-artifacts/</outputDirectory>
+                                    <destFileName>custom-command.zip</destFileName>
+                                </artifactItem>
+
+                                <artifactItem>
+                                    <groupId>dev.sheldan.abstracto-templates.translations</groupId>
+                                    <artifactId>image-generation</artifactId>
+                                    <version>${abstracto.templates.version}</version>
+                                    <type>zip</type>
+                                    <overWrite>true</overWrite>
+                                    <outputDirectory>${file.basedir}/template-data/translation-artifacts/</outputDirectory>
+                                    <destFileName>image-generation.zip</destFileName>
+                                </artifactItem>
+
+                                <!-- abstracto liquibase artifacts -->
+                                <artifactItem>
+                                    <groupId>dev.sheldan.abstracto.core</groupId>
+                                    <artifactId>core-impl</artifactId>
+                                    <version>${abstracto.version}</version>
+                                    <classifier>liquibase</classifier>
+                                    <type>zip</type>
+                                    <overWrite>true</overWrite>
+                                    <outputDirectory>${file.basedir}/db-data/liquibase-artifacts/</outputDirectory>
+                                    <destFileName>core.zip</destFileName>
+                                </artifactItem>
+
+                                <artifactItem>
+                                    <groupId>dev.sheldan.abstracto.scheduling</groupId>
+                                    <artifactId>scheduling-impl</artifactId>
+                                    <version>${abstracto.version}</version>
+                                    <classifier>liquibase</classifier>
+                                    <type>zip</type>
+                                    <overWrite>true</overWrite>
+                                    <outputDirectory>${file.basedir}/db-data/liquibase-artifacts/</outputDirectory>
+                                    <destFileName>scheduling.zip</destFileName>
+                                </artifactItem>
+
+                                <artifactItem>
+                                    <groupId>dev.sheldan.abstracto.modules</groupId>
+                                    <artifactId>utility-impl</artifactId>
+                                    <version>${abstracto.version}</version>
+                                    <classifier>liquibase</classifier>
+                                    <type>zip</type>
+                                    <overWrite>true</overWrite>
+                                    <outputDirectory>${file.basedir}/db-data/liquibase-artifacts/</outputDirectory>
+                                    <destFileName>utility.zip</destFileName>
+                                </artifactItem>
+
+                                <artifactItem>
+                                    <groupId>dev.sheldan.abstracto.modules</groupId>
+                                    <artifactId>webservices-impl</artifactId>
+                                    <version>${abstracto.version}</version>
+                                    <classifier>liquibase</classifier>
+                                    <type>zip</type>
+                                    <overWrite>true</overWrite>
+                                    <outputDirectory>${file.basedir}/db-data/liquibase-artifacts/</outputDirectory>
+                                    <destFileName>webservices.zip</destFileName>
+                                </artifactItem>
+
+                                <artifactItem>
+                                    <groupId>dev.sheldan.abstracto.modules</groupId>
+                                    <artifactId>entertainment-impl</artifactId>
+                                    <version>${abstracto.version}</version>
+                                    <classifier>liquibase</classifier>
+                                    <type>zip</type>
+                                    <overWrite>true</overWrite>
+                                    <outputDirectory>${file.basedir}/db-data/liquibase-artifacts/</outputDirectory>
+                                    <destFileName>entertainment.zip</destFileName>
+                                </artifactItem>
+
+                                <artifactItem>
+                                    <groupId>dev.sheldan.abstracto.modules</groupId>
+                                    <artifactId>custom-command-impl</artifactId>
+                                    <version>${abstracto.version}</version>
+                                    <classifier>liquibase</classifier>
+                                    <type>zip</type>
+                                    <overWrite>true</overWrite>
+                                    <outputDirectory>${file.basedir}/db-data/liquibase-artifacts/</outputDirectory>
+                                    <destFileName>custom-command.zip</destFileName>
+                                </artifactItem>
+
+                                <artifactItem>
+                                    <groupId>dev.sheldan.abstracto.modules</groupId>
+                                    <artifactId>image-generation-impl</artifactId>
+                                    <version>${abstracto.version}</version>
+                                    <classifier>liquibase</classifier>
+                                    <type>zip</type>
+                                    <overWrite>true</overWrite>
+                                    <outputDirectory>${file.basedir}/db-data/liquibase-artifacts/</outputDirectory>
+                                    <destFileName>image-generation.zip</destFileName>
+                                </artifactItem>
+
+                            </artifactItems>
+                        </configuration>
+                    </execution>
+                </executions>
+         
+            </plugin>
+        </plugins>
+    </build>
+
+</project>

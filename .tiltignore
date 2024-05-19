@@ -1,0 +1,3 @@
+*.tgz
+tilt/crimson-dev/tmpcharts/
+tilt/crimson-dev/charts/*.tgz
