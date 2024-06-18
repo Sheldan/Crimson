@@ -3,7 +3,7 @@ bot:
   repository: harbor.sheldan.dev/crimson
   pullPolicy: Always
   image: crimson-bot
-  tag: 0.0.1
+  tag: 0.0.2
   livenessProbe:
     initialDelaySeconds: 60
     periodSeconds: 5
@@ -20,7 +20,7 @@ privateRestApi:
   repository: harbor.sheldan.dev/crimson
   pullPolicy: Always
   image: crimson-private-rest-api
-  tag: 0.0.1
+  tag: 0.0.2
   podAnnotations: {}
   podSecurityContext: {}
   securityContext: {}
@@ -56,7 +56,7 @@ templateDeploymentData:
   repository: harbor.sheldan.dev/crimson
   pullPolicy: Always
   image: crimson-template-data
-  tag: 0.0.1
+  tag: 0.0.2
 dbConfigDeployment:
   enabled: true
   repository: harbor.sheldan.dev/abstracto
@@ -67,7 +67,7 @@ dbConfigDeploymentData:
   repository: harbor.sheldan.dev/crimson
   pullPolicy: Always
   image: crimson-db-data
-  tag: 0.0.1
+  tag: 0.0.2
 dbCredentials:
   host: null
   port: null

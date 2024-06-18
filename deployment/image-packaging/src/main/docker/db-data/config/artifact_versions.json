@@ -6,7 +6,8 @@
     { "zip": "entertainment", "file": "entertainment-changeLog.xml"},
     { "zip": "custom-command", "file": "custom-command-changeLog.xml"},
     { "zip": "utility", "file": "utility-changeLog.xml"},
-    { "zip": "webservices", "file": "webservices-changeLog.xml"}
+    { "zip": "webservices", "file": "webservices-changeLog.xml"},
+    { "zip": "remind", "file": "remind-changeLog.xml"}
   ]
 }
 

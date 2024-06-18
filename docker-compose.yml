@@ -5,15 +5,6 @@ services:
     build:
       context: deployment/image-packaging/src/main/docker/crimson
     image: ${REGISTRY_PREFIX}crimson-bot:${VERSION:-latest}
-  rest-api-packaging:
-    build:
-      context: deployment/image-packaging/src/main/docker/rest-api
-      args:
-        crimson_REGISTRY_PREFIX: ${REGISTRY_PREFIX}
-        REGISTRY_PREFIX: ${ABSTRACTO_PREFIX}
-        VERSION: ${VERSION}
-        ABSTRACTO_VERSION: ${ABSTRACTO_VERSION}
-    image: ${REGISTRY_PREFIX}crimson-rest-api:${VERSION:-latest}
   private-rest-api-packaging:
     build:
       context: deployment/image-packaging/src/main/docker/private-rest-api

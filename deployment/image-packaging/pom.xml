@@ -3,7 +3,7 @@
     <parent>
         <groupId>dev.sheldan.crimson</groupId>
         <artifactId>deployment</artifactId>
-        <version>0.0.1-SNAPSHOT</version>
+        <version>0.0.2-SNAPSHOT</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
@@ -100,6 +100,16 @@
                                     <destFileName>image-generation.zip</destFileName>
                                 </artifactItem>
 
+                                <artifactItem>
+                                    <groupId>dev.sheldan.abstracto-templates.templates</groupId>
+                                    <artifactId>remind</artifactId>
+                                    <version>${abstracto.templates.version}</version>
+                                    <type>zip</type>
+                                    <overWrite>true</overWrite>
+                                    <outputDirectory>${file.basedir}/template-data/template-artifacts/</outputDirectory>
+                                    <destFileName>remind.zip</destFileName>
+                                </artifactItem>
+
                                 <!-- abstracto translation artefacts -->
 
                                 <artifactItem>
@@ -160,6 +170,16 @@
                                     <overWrite>true</overWrite>
                                     <outputDirectory>${file.basedir}/template-data/translation-artifacts/</outputDirectory>
                                     <destFileName>image-generation.zip</destFileName>
+                                </artifactItem>
+
+                                <artifactItem>
+                                    <groupId>dev.sheldan.abstracto-templates.translations</groupId>
+                                    <artifactId>remind</artifactId>
+                                    <version>${abstracto.templates.version}</version>
+                                    <type>zip</type>
+                                    <overWrite>true</overWrite>
+                                    <outputDirectory>${file.basedir}/template-data/translation-artifacts/</outputDirectory>
+                                    <destFileName>remind.zip</destFileName>
                                 </artifactItem>
 
                                 <!-- abstracto liquibase artifacts -->
@@ -238,6 +258,17 @@
                                     <overWrite>true</overWrite>
                                     <outputDirectory>${file.basedir}/db-data/liquibase-artifacts/</outputDirectory>
                                     <destFileName>image-generation.zip</destFileName>
+                                </artifactItem>
+
+                                <artifactItem>
+                                    <groupId>dev.sheldan.abstracto.modules</groupId>
+                                    <artifactId>remind-impl</artifactId>
+                                    <version>${abstracto.version}</version>
+                                    <classifier>liquibase</classifier>
+                                    <type>zip</type>
+                                    <overWrite>true</overWrite>
+                                    <outputDirectory>${file.basedir}/db-data/liquibase-artifacts/</outputDirectory>
+                                    <destFileName>remind.zip</destFileName>
                                 </artifactItem>
 
                             </artifactItems>

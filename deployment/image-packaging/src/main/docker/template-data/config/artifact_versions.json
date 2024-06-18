@@ -1,12 +1,11 @@
 {
   "template_artifacts": [
-    "core", "entertainment", "custom-command", "utility", "webservices",
-    "image-generation"
+    "core",
+    "entertainment", "custom-command", "utility", "webservices", "image-generation", "remind"
   ],
   "translation_artifacts": [
     "core",
-    "entertainment", "custom-command", "utility", "webservices",
-    "image-generation"
+    "entertainment", "custom-command", "utility", "webservices", "image-generation", "remind"
   ]
 }
 
