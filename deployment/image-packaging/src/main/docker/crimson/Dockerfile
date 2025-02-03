@@ -1,4 +1,4 @@
-FROM amazoncorretto:17.0.8-alpine3.18
+FROM amazoncorretto:17.0.14-alpine3.20
 MAINTAINER Sheldan
 VOLUME /tmp
 ADD config/* /config/
