@@ -3,7 +3,7 @@ bot:
   repository: harbor.sheldan.dev/crimson
   pullPolicy: Always
   image: crimson-bot
-  tag: 0.0.2
+  tag: 1.0.0
   livenessProbe:
     initialDelaySeconds: 60
     periodSeconds: 5
@@ -20,7 +20,7 @@ privateRestApi:
   repository: harbor.sheldan.dev/crimson
   pullPolicy: Always
   image: crimson-private-rest-api
-  tag: 0.0.2
+  tag: 1.0.0
   podAnnotations: {}
   podSecurityContext: {}
   securityContext: {}
@@ -51,23 +51,23 @@ templateDeployment:
   repository: harbor.sheldan.dev/abstracto
   pullPolicy: Always
   image: abstracto-template-deployment
-  tag: 1.5.36
+  tag: 1.6.0
 templateDeploymentData:
   repository: harbor.sheldan.dev/crimson
   pullPolicy: Always
   image: crimson-template-data
-  tag: 0.0.2
+  tag: 1.0.0
 dbConfigDeployment:
   enabled: true
   repository: harbor.sheldan.dev/abstracto
   pullPolicy: Always
   image: abstracto-db-deployment
-  tag: 1.5.36
+  tag: 1.6.0
 dbConfigDeploymentData:
   repository: harbor.sheldan.dev/crimson
   pullPolicy: Always
   image: crimson-db-data
-  tag: 0.0.2
+  tag: 1.0.0
 dbCredentials:
   host: null
   port: null
@@ -81,6 +81,8 @@ apiKeys:
   youtube:
     apiKey: null
   openWeatherMap:
+    apiKey: null
+  freeCurrencyApi:
     apiKey: null
 imagePullSecrets: null
 nameOverride: ''

@@ -59,6 +59,11 @@ spec:
                   key: dbName
             - name: DB_SCHEMA
               value: {{ .Values.dbCredentials.schema }}
+            - name: FREE_CURRENCY_API_API_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: api-keys
+                  key: freeCurrencyApiApiKey
             - name: DEBRA_DONATION_NOTIFICATION_SERVER_ID
               value: "297910194841583616"
             - name: TOKEN
