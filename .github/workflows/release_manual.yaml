@@ -5,7 +5,7 @@ permissions:
   contents: write
 jobs:
   publish:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     steps:
       - uses: actions/checkout@v4
         with:
@@ -38,7 +38,7 @@ jobs:
           maven-args: "-Dmaven.javadoc.skip=true -s settings.xml -DskipTests"
           access-token: ${{ secrets.GITHUB_TOKEN }}
       - name: Login to Harbor
-        uses: docker/login-action@v2
+        uses: docker/login-action@v3
         with:
           registry: harbor.sheldan.dev
           username: ${{ secrets.HARBOR_USERNAME }}
@@ -71,7 +71,7 @@ jobs:
         with:
           path: .env
       - name: Build and push Docker containers
-        run: docker-compose build && docker-compose push
+        run: docker compose build && docker compose push
         env:
           REGISTRY_PREFIX: ${{ steps.dotenv.outputs.registry_prefix }}
           VERSION: ${{ steps.dotenv.outputs.version }}
