@@ -22,6 +22,14 @@
         <abstracto.templates.version>1.4.52</abstracto.templates.version>
     </properties>
 
+
+    <scm>
+        <connection>scm:git:${project.scm.url}</connection>
+        <developerConnection>scm:git:${project.scm.url}</developerConnection>
+        <url>https://github.com/Sheldan/Crimson.git</url>
+        <tag>HEAD</tag>
+    </scm>
+
     <modules>
         <module>application</module>
         <module>deployment</module>
