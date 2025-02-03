@@ -4,7 +4,7 @@
     <parent>
         <groupId>dev.sheldan.crimson</groupId>
         <artifactId>crimson</artifactId>
-        <version>1.0.1</version>
+        <version>1.0.2-SNAPSHOT</version>
     </parent>
 
     <groupId>dev.sheldan.crimson.application</groupId>
