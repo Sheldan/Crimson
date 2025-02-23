@@ -13,7 +13,7 @@
     <groupId>dev.sheldan.crimson</groupId>
     <artifactId>crimson</artifactId>
     <name>Crimson</name>
-    <version>1.0.1-SNAPSHOT</version>
+    <version>1.0.1</version>
 
     <properties>
         <maven.compiler.target>17</maven.compiler.target>
@@ -70,7 +70,7 @@
         <connection>scm:git:${project.scm.url}</connection>
         <developerConnection>scm:git:${project.scm.url}</developerConnection>
         <url>https://github.com/Sheldan/Crimson.git</url>
-        <tag>crimson-1.0.0</tag>
+        <tag>crimson-1.0.1</tag>
     </scm>
 
 </project>
